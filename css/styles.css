@@ -1,5 +1,6 @@
 :root {
     line-height: 1.5;
+    --base-color: rgba(32, 32, 32, 0.99);
     --bg-darker-color: rgba(25, 25, 25, 0.975);
     --bg-alt-color: rgba(59, 59, 72, 0.619);
     --highlight-color: rgba(98, 97, 97, 0.395);
@@ -36,7 +37,7 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
-    background-color: rgba(0, 0, 0, 0.874);
+    background-color: var(--base-color);
 }
 
 header {
@@ -51,10 +52,6 @@ h1 {
     line-height: 50px;
     font-size: 1.5rem;
     font-weight: 600;
-}
-
-main {
-    width: clamp(60ch, 75%, 90ch);
 }
 
 dialog {
@@ -115,6 +112,71 @@ button {
 button:hover {
     background-color: white;
     color: var(--bg-darker-color);
+}
+
+button:focus {
+    outline: none;
+}
+
+#announcement {
+    width: max-content;
+    padding: 20px 50px;
+}
+
+#announcement div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: max(320px, 80%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.gameboard {
+    width: 316px;
+    border-radius: 7px;
+    background-color: var(--highlight-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+}
+
+.grid {
+    width: 100px;
+    height: 100px;
+    background-color: var(--base-color);
+    border-radius: 5px;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    row-gap: 15px;
+    column-gap: 30px;
+}
+
+.turn {
+    grid-column: 1 / 3;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.mark {
+    width: 30px;
 }
 
 footer {
