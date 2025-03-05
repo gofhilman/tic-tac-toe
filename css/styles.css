@@ -1,0 +1,125 @@
+:root {
+    line-height: 1.5;
+    --bg-darker-color: rgba(25, 25, 25, 0.975);
+    --bg-alt-color: rgba(59, 59, 72, 0.619);
+    --highlight-color: rgba(98, 97, 97, 0.395);
+}
+  
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+    margin: 0;
+}
+  
+ol[role="list"], ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+}
+  
+h1, h2, h3, h4, h5 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+    width: 50px;
+    filter: invert(100%) brightness(1000%);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+        'Helvetica Neue', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.874);
+}
+
+header {
+    background-color: var(--bg-alt-color);
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    padding: 10px max(2rem, 50vw - 200px / 2);
+}
+
+h1 {
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+main {
+    width: clamp(60ch, 75%, 90ch);
+}
+
+dialog {
+    width: clamp(45ch, 50%, 75ch);
+    color: white;
+    background-color: var(--bg-darker-color);  
+    border: none;
+    border-radius: 10px;
+}
+
+dialog p {
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.form-body {
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: 10px 15px;
+    margin: 10px 20px;
+}
+
+label {
+    font-weight: 450;
+}
+
+dialog input {
+    padding: 0.3rem;
+    color: white;
+    background-color: var(--highlight-color);
+    border-style: none;
+    border-radius: 5px;
+    border-bottom: 2px solid white;
+}
+
+dialog input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(0, 132, 255);
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+}
+
+button {
+    color: white;
+    background-color: var(--highlight-color);
+    padding: 5px 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: var(--bg-darker-color);
+}
+
+footer {
+    background-color: var(--bg-alt-color);
+    width: 100%;
+    padding: 3px max(2rem, 50vw - 200px / 2);
+    font-size: 0.9rem;
+}

@@ -5,26 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modern-normalize.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <img src="" alt="Logo">
+        <img src="icons/rhombus-split.svg" alt="Logo">
         <h1>Tic Tac Toe</h1>
     </header>
     <main>
-        <dialog>
+        <dialog id="name-form">
             <form action="">
+                <p>Enter the player names to play the game</p>
                 <div class="form-body">
                     <label for="player-one">Player 1</label>
                     <input type="text" id="player-one" name="player-one">
                     <label for="player-two">Player 2</label>
                     <input type="text" id="player-two" name="player-two">
                 </div>
-                <button id="confirm">Confirm</button>
+                <div class="form-submit">
+                    <button id="confirm">Confirm</button>
+                </div>
             </form>
         </dialog>
-
+        <div class="container">
+            <div class="gameboard">
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+                <div class="grid"></div>
+            </div>
+            <div class="info">
+                <div class="turn">
+                    <div>Turn</div>
+                    <div id="turn-number"></div>
+                </div>
+                <div class="player">
+                    <p class="name" id="player-one-name"></p>
+                    <img src="icons/red-cross.png" alt="Cross mark" class="mark">
+                </div>
+                <div class="player">
+                    <p class="name" id="player-two-name"></p>
+                    <img src="icons/rec.png" alt="Circle mark" class="mark">
+                </div>
+            </div>
+        </div>
     </main>
     <footer>Copyright &copy; gofhilman 2025</footer>
 </body>

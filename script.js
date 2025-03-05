@@ -65,3 +65,4 @@ const ticTacToe = (function (doc) {
 hilman = ticTacToe.createPlayer('Hilman','x');
 fikry = ticTacToe.createPlayer('Fikry', 'o');
 game = ticTacToe.createGameboard([hilman, fikry]);
+// document.querySelector("#name-form").showModal();
