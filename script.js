@@ -129,6 +129,7 @@ const ticTacToe = (function (doc) {
         boardGrids.forEach(boardGrid => boardGrid.replaceChildren());
         moveCount = 0;
         players.forEach(player => player.result = '');
+        [players[0].name, players[1].name] = [players[1].name, players[0].name];
     }
     
     return { displayForm, marking };
