@@ -55,7 +55,7 @@ h1 {
 }
 
 dialog {
-    width: clamp(45ch, 50%, 75ch);
+    width: 380px;
     color: white;
     background-color: var(--bg-darker-color);  
     border: none;
@@ -155,13 +155,20 @@ main {
     height: 100px;
     background-color: var(--base-color);
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid > img {
+    width: 80px;
 }
 
 .info {
     display: grid;
     grid-template-columns: max-content max-content;
-    row-gap: 15px;
-    column-gap: 30px;
+    row-gap: 10px;
+    column-gap: 10px;
 }
 
 .turn {

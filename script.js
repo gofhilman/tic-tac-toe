@@ -1,24 +1,57 @@
 const ticTacToe = (function (doc) {
-    function createGameboard (players) {
-        let moveCount = 0;
+    const nameForm = doc.querySelector("#name-form");
+    const playerOne = doc.querySelector("#player-one");
+    const playerTwo = doc.querySelector("#player-two");
+    const confirmData = doc.querySelector("#confirm");
+
+    const announcement = doc.querySelector("#announcement");
+    const repeatGame = doc.querySelector("#repeat");
+
+    const gameboard = doc.querySelector(".gameboard");
+    const turnNumber = doc.querySelector("#turn-number");
+    const playerOneName = doc.querySelector("#player-one-name");
+    const playerTwoName = doc.querySelector("#player-two-name");
+
+    const players = [];
+    let moveCount = 0;
+
+    function displayForm () {
+        nameForm.showModal();
+        confirmData.addEventListener('click', (event) => {
+            event.preventDefault();
+            nameForm.close(); 
+            displayInfo();
+            const playerObjs = createPlayers([playerOne.value, playerTwo.value]);
+            playerObjs.forEach(player => players.push(player));
+        });
+    }
+
+    function createGameboard () {
         let grids = [];
         for (let gridPos = 0; gridPos < 9; gridPos++) grids.push('');
 
-        const marking = (gridPos) => {
-            if (grids[gridPos] === '') {
-                if (moveCount%2 === 0) {
-                    grids[gridPos] = 'x';
-                } else {
-                    grids[gridPos] = 'o';
+        const marking = () => {
+            gameboard.addEventListener('click', (event) => {
+                let gameGrid = event.target.closest('.gameboard').children;
+                let gridPos = Array.from(gameGrid).indexOf(event.target);
+                if (grids[gridPos] === '') {
+                    if (moveCount%2 === 0) {
+                        grids[gridPos] = 'x';
+                        gameGrid[gridPos].innerHTML = '<img src="icons/red-cross.png" alt="Cross">'
+                    } else {
+                        grids[gridPos] = 'o';
+                        gameGrid[gridPos].innerHTML = '<img src="icons/rec.png" alt="Circle">'
+                    }
+                    moveCount++;
+                    let gameDecision = decideGame();
+                    if (gameDecision === 'draw') {
+                        players.forEach(player => player.result = 'draw');
+                    } else if (gameDecision) {
+                        players.find(player => player.mark === gameDecision).result = 'win';
+                    }
+                    displayInfo();
                 }
-                moveCount++;
-                let gameDecision = decideGame();
-                if (gameDecision === 'draw') {
-                    players.forEach(player => player.result = 'draw');
-                } else if (gameDecision) {
-                    players.find(player => player.mark === gameDecision).result = 'win';
-                }
-            }
+            });
         }
 
         const decideGame = () => {
@@ -42,28 +75,34 @@ const ticTacToe = (function (doc) {
             players.forEach(player => player.result = '');
         }
 
-        return { get grids() { return grids.slice(); }, 
-            marking, 
-            reset 
-        };
+        return { marking, reset };
     }
 
-    function createPlayer (name, mark) {
-        let result = '';
-        return { name, mark, result };
-    };
+    function displayInfo () {
+        turnNumber.textContent = `${moveCount + 1}`;
+        playerOneName.textContent = `${playerOne.value}`;
+        playerTwoName.textContent = `${playerTwo.value}`;
+    }
 
-    function checkPattern(pattern) {
+    function createPlayers (playerNames) {
+        return [{name: playerNames[0],
+            mark: 'x',
+            result: ''
+        }, {name: playerNames[1],
+            mark: 'o',
+            result: ''
+        }];
+    }
+
+    function checkPattern (pattern) {
         if (pattern[0]) {
             return pattern.every(mark => mark === pattern[0]);
         } 
     }
     
-    return { createGameboard, createPlayer };
+    return { displayForm, createGameboard };
 })(document);
 
-hilman = ticTacToe.createPlayer('Hilman','x');
-fikry = ticTacToe.createPlayer('Fikry', 'o');
-game = ticTacToe.createGameboard([hilman, fikry]);
-// document.querySelector("#name-form").showModal();
-// document.querySelector("#announcement").showModal();
+ticTacToe.displayForm();
+const game = ticTacToe.createGameboard();
+game.marking();
