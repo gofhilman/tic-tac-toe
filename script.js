@@ -92,8 +92,8 @@ const ticTacToe = (function (doc) {
 
     function displayInfo () {
         turnNumber.textContent = `${moveCount + 1}`;
-        playerOneName.textContent = `${playerOne.value}`;
-        playerTwoName.textContent = `${playerTwo.value}`;
+        playerOneName.textContent = `${players[0].name}`;
+        playerTwoName.textContent = `${players[1].name}`;
         if (moveCount%2 === 0) {
             playerOneName.style.opacity = 1;
             playerTwoName.style.opacity = 0.3;
