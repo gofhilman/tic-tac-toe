@@ -133,7 +133,7 @@ const ticTacToe = (function (doc) {
         [players[0].name, players[1].name] = [players[1].name, players[0].name];
     }
     
-    return { displayForm, marking, players };
+    return { displayForm, marking };
 })(document);
 
 ticTacToe.displayForm();
