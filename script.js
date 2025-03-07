@@ -26,9 +26,9 @@ const ticTacToe = (function (doc) {
         confirmData.addEventListener('click', (event) => {
             event.preventDefault();
             nameForm.close(); 
-            displayInfo();
             const playerObjs = createPlayers([playerOne.value, playerTwo.value]);
             playerObjs.forEach(player => players.push(player));
+            displayInfo();
         });
     }  
 
@@ -116,13 +116,14 @@ const ticTacToe = (function (doc) {
         } else {
             announceText.textContent = `${player.name} wins!`;
         }
-        repeatGame.addEventListener('click', (event) => {
-            event.preventDefault();
-            announcement.close(); 
-            reset();
-            displayInfo();
-        });
     }
+
+    repeatGame.addEventListener('click', (event) => {
+        event.preventDefault();
+        announcement.close(); 
+        reset();
+        displayInfo();
+    });
 
     function reset () {
         grids.fill('');
@@ -132,7 +133,7 @@ const ticTacToe = (function (doc) {
         [players[0].name, players[1].name] = [players[1].name, players[0].name];
     }
     
-    return { displayForm, marking };
+    return { displayForm, marking, players };
 })(document);
 
 ticTacToe.displayForm();
